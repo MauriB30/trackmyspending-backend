@@ -22,14 +22,15 @@ Sistema de autenticación backend para una aplicación de seguimiento de gastos 
 
 ## 📦 Instalación
 
+```
 npm install
-
+```
 
 ## ⚙️ Variables de Entorno
 
 Crear un archivo `.env` con:
 
-
+```
 PORT=5000
 MONGO_URI=tu_uri_de_mongodb
 NODE_ENV=development
@@ -37,18 +38,20 @@ JWT_ACCESS_SECRET=tu_secret_para_access_token
 JWT_REFRESH_SECRET=tu_secret_para_refresh_token
 ACCESS_TOKEN_EXPIRY=1h
 REFRESH_TOKEN_EXPIRY=7d
-
+```
 
 ## 🏃‍♂️ Ejecución
 
-
-# Desarrollo
+**Desarrollo:**
+```
 npm run dev
+```
 
-# Producción
+**Producción:**
+```
 npm run build
 npm start
-
+```
 
 ## 📝 Estado del Proyecto
 
