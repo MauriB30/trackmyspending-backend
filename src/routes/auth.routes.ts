@@ -5,13 +5,19 @@ import refreshToken from '../controllers/auth/refreshToken';
 import register from '../controllers/auth/register';
 import { refreshTokenValidation } from '../middleware/authMiddlewares';
 import validateBody from '../middleware/validateBody';
+import { verifySiteOrigin } from '../middleware/verifySiteOrigin';
 import { userLoginSchema, userRegisterSchema } from '../validators/auth.schema';
 
 const authRouter = Router();
 
 authRouter.post('/register', validateBody(userRegisterSchema), register);
 authRouter.post('/login', validateBody(userLoginSchema), login);
-authRouter.post('/refresh', refreshTokenValidation, refreshToken);
+authRouter.post(
+    '/refresh',
+    verifySiteOrigin,
+    refreshTokenValidation,
+    refreshToken
+);
 authRouter.post('/logout', logout);
 
 export default authRouter;

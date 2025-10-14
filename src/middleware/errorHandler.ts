@@ -41,6 +41,10 @@ export class AppError extends Error {
             errors
         );
     }
+
+    static forbidden(message = 'No tienes permiso para realizar esta acción') {
+        return new AppError(message, 'FORBIDDEN', 403);
+    }
 }
 
 export function errorHandler(
