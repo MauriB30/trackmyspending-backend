@@ -38,14 +38,14 @@ async function refreshToken(req: Request, res: Response, next: NextFunction) {
         res.cookie('refreshToken', newRefreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
         res.cookie('accessToken', newAccessToken, {
             httpOnly: true,
             secure: appConfig.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: 60 * 60 * 1000,
         });
 
