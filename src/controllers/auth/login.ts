@@ -49,6 +49,7 @@ async function login(req: Request, res: Response, next: NextFunction) {
             user: {
                 id: user._id,
                 name: user.name,
+                email: user.email,
             },
         });
     } catch (error) {

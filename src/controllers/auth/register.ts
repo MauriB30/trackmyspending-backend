@@ -6,9 +6,9 @@ async function register(req: Request, res: Response, next: NextFunction) {
     try {
         const { name, email, password } = req.body;
 
-        const existingUser = await UserModel.findOne({ email });
+        const userExists = await UserModel.exists({ email });
 
-        if (existingUser) {
+        if (userExists) {
             throw AppError.alreadyExists('El email ya está registrado.');
         }
 
@@ -21,6 +21,7 @@ async function register(req: Request, res: Response, next: NextFunction) {
         await newUser.save();
 
         return res.status(201).json({
+            success: true,
             message: 'Usuario registrado con éxito',
             user: {
                 id: newUser._id,

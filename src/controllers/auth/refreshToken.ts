@@ -19,10 +19,10 @@ async function refreshToken(req: Request, res: Response, next: NextFunction) {
             );
         }
 
-        const user = await UserModel.findById(userId);
+        const user = await UserModel.findById(userId).select('_id').lean();
 
         if (!user) {
-            throw AppError.tokenExpired('Token de refresco inválido.');
+            throw AppError.notFound('Usuario no encontrado');
         }
 
         await tokenModel.deleteOne({ token: oldRefreshToken });
