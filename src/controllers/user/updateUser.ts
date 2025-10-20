@@ -18,6 +18,13 @@ export async function updateUser(
             throw AppError.notFound('Usuario no encontrado');
         }
 
+        if (email !== user.email) {
+            const emailExists = await UserModel.exists({ email });
+            if (emailExists) {
+                throw AppError.alreadyExists('El email ya está registrado');
+            }
+        }
+
         user.name = name;
 
         user.email = email;

@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRouter);
-app.use('/api/users', userRoutes);
+app.use('/api/user', userRoutes);
 
 app.use(errorHandler);
 

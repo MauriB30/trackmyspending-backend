@@ -22,7 +22,7 @@ export class AppError extends Error {
     }
 
     static tokenExpired(message = 'El token ha expirado') {
-        return new AppError(message, 'TOKEN_EXPIRED', 401);
+        return new AppError(message, 'TOKEN_ERROR', 401);
     }
 
     static alreadyExists(message = 'El recurso ya existe') {

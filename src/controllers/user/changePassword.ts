@@ -18,7 +18,7 @@ async function changePassword(req: Request, res: Response, next: NextFunction) {
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch) {
-            throw AppError.unauthorized('Contraseña actual incorrecta');
+            throw AppError.alreadyExists('Contraseña actual incorrecta');
         }
 
         user.password = newPassword;
