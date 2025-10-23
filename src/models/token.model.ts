@@ -6,7 +6,6 @@ const tokenSchema = new Schema<IToken>(
         token: {
             type: String,
             required: true,
-            unique: true,
         },
         userId: {
             type: Schema.Types.ObjectId,
@@ -16,6 +15,6 @@ const tokenSchema = new Schema<IToken>(
     { timestamps: true }
 );
 
-tokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 7 });
+tokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 604800 });
 
 export const tokenModel = model<IToken>('Token', tokenSchema);

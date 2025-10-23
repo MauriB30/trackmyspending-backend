@@ -11,7 +11,7 @@ import authRouter from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 
 const corsOptions: CorsOptions = {
-    origin: 'https://trackmyspending-frontend.vercel.app',
+    origin: appConfig.CORS_ORIGIN,
     credentials: true,
 };
 
